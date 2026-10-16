@@ -1,4 +1,4 @@
-# Lumi Python SDK (`mailifica`)
+# Lumi Python SDK (`lumi`)
 
 > SDK oficial em Python para a infraestrutura de e-mails transacionais **Lumi**, com interface drop-in replacement compatível com o Resend.
 
@@ -7,9 +7,9 @@
 ## 📦 Instalação
 
 ```bash
-pip install mailifica
+pip install lumi
 # ou com Poetry
-poetry add mailifica
+poetry add lumi
 ```
 
 ---
@@ -95,7 +95,7 @@ from lumi import Webhooks
 
 is_valid = Webhooks.verify_signature(
     payload=raw_body,
-    signature=headers.get("mailifica-signature"),
+    signature=headers.get("lumi-signature"),
     secret="seu_webhook_secret"
 )
 ```

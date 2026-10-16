@@ -50,7 +50,7 @@ class HttpClient:
         headers = {
             "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
-            "User-Agent": "mailifica-python/1.0.0",
+            "User-Agent": "lumi-python/1.0.0",
         }
 
         try:

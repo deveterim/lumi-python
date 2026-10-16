@@ -10,7 +10,7 @@ setup(
     author_email="team@lumi.com",
     url="https://github.com/deveterim/lumi-python",
     packages=find_packages(),
-    package_data={"mailifica": ["py.typed"]},
+    package_data={"lumi": ["py.typed"]},
     install_requires=[
         "requests>=2.28.0",
         "typing-extensions>=4.0.0;python_version<'3.10'",
