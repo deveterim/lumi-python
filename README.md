@@ -22,7 +22,7 @@ poetry add lumi
 import lumi
 
 # Configurar API Key
-lumi.api_key = "ma_live_123456789"
+lumi.api_key = "lu_live_123456789"
 
 params: lumi.Emails.SendParams = {
     "from": "onboarding@suaempresa.ao",
@@ -40,7 +40,7 @@ print("E-mail ID:", email["id"])
 ```python
 from lumi import Lumi
 
-client = Lumi("ma_live_123456789")
+client = Lumi("lu_live_123456789")
 
 response = client.emails.send({
     "from": "suporte@suaempresa.ao",
@@ -55,7 +55,7 @@ response = client.emails.send({
 ```python
 import lumi
 
-lumi.api_key = "ma_live_123456789"
+lumi.api_key = "lu_live_123456789"
 
 batch_response = lumi.Batch.send([
     {

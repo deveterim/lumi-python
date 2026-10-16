@@ -1,7 +1,7 @@
 import lumi
 
 # Definir API Key globalmente ou via LUMI_API_KEY no ambiente
-lumi.api_key = "ma_live_123456789"
+lumi.api_key = "lu_live_123456789"
 
 params: lumi.Emails.SendParams = {
     "from": "onboarding@suaempresa.ao",

@@ -8,8 +8,8 @@ from lumi import Lumi, Webhooks, AuthenticationError, InvalidRequestError
 
 class TestLumiPython(unittest.TestCase):
     def setUp(self):
-        lumi.api_key = "ma_test_123456789"
-        self.client = Lumi("ma_test_123456789")
+        lumi.api_key = "lu_test_123456789"
+        self.client = Lumi("lu_test_123456789")
 
     @patch("requests.request")
     def test_send_email_static(self, mock_request):
@@ -30,7 +30,7 @@ class TestLumiPython(unittest.TestCase):
         mock_request.assert_called_once()
         args, kwargs = mock_request.call_args
         self.assertEqual(kwargs["json"]["from"], "onboarding@empresa.ao")
-        self.assertEqual(kwargs["headers"]["Authorization"], "Bearer ma_test_123456789")
+        self.assertEqual(kwargs["headers"]["Authorization"], "Bearer lu_test_123456789")
 
     @patch("requests.request")
     def test_send_email_instance(self, mock_request):
