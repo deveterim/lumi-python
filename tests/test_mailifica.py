@@ -3,13 +3,13 @@ from unittest.mock import patch, MagicMock
 import hmac
 import hashlib
 import json
-import mailifica
-from mailifica import Mailifica, Webhooks, AuthenticationError, InvalidRequestError
+import lumi
+from lumi import Lumi, Webhooks, AuthenticationError, InvalidRequestError
 
-class TestMailificaPython(unittest.TestCase):
+class TestLumiPython(unittest.TestCase):
     def setUp(self):
-        mailifica.api_key = "ma_test_123456789"
-        self.client = Mailifica("ma_test_123456789")
+        lumi.api_key = "ma_test_123456789"
+        self.client = Lumi("ma_test_123456789")
 
     @patch("requests.request")
     def test_send_email_static(self, mock_request):
@@ -19,7 +19,7 @@ class TestMailificaPython(unittest.TestCase):
         mock_response.json.return_value = {"id": "email_123", "status": "queued"}
         mock_request.return_value = mock_response
 
-        response = mailifica.Emails.send({
+        response = lumi.Emails.send({
             "from": "onboarding@empresa.ao",
             "to": "cliente@gmail.com",
             "subject": "Boas-vindas",
@@ -57,7 +57,7 @@ class TestMailificaPython(unittest.TestCase):
         mock_response.json.return_value = {"data": [{"id": "1"}, {"id": "2"}]}
         mock_request.return_value = mock_response
 
-        response = mailifica.Batch.send([
+        response = lumi.Batch.send([
             {"from": "a@a.ao", "to": "b@b.com", "subject": "1", "html": "1"},
             {"from": "a@a.ao", "to": "c@c.com", "subject": "2", "html": "2"}
         ])
@@ -87,7 +87,7 @@ class TestMailificaPython(unittest.TestCase):
         mock_request.return_value = mock_response
 
         with self.assertRaises(AuthenticationError):
-            mailifica.Emails.send({"from": "a@a.ao", "to": "b@b.ao", "subject": "a", "html": "a"})
+            lumi.Emails.send({"from": "a@a.ao", "to": "b@b.ao", "subject": "a", "html": "a"})
 
 if __name__ == "__main__":
     unittest.main()

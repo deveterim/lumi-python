@@ -1,15 +1,15 @@
 import os
 import requests
 from typing import Any, Dict, Optional
-from mailifica.errors import (
-    MailificaError,
+from lumi.errors import (
+    LumiError,
     AuthenticationError,
     InvalidRequestError,
     RateLimitError,
     InternalServerError,
 )
 
-DEFAULT_BASE_URL = "https://api.mailifica.com/v1"
+DEFAULT_BASE_URL = "https://api.lumi.com/v1"
 
 class class_or_instancemethod:
     def __init__(self, fn):
@@ -24,16 +24,16 @@ class class_or_instancemethod:
 class HttpClient:
     @staticmethod
     def get_api_key(api_key: Optional[str] = None) -> str:
-        from mailifica import api_key as global_key
-        key = api_key or global_key or os.environ.get("MAILIFICA_API_KEY")
+        from lumi import api_key as global_key
+        key = api_key or global_key or os.environ.get("LUMI_API_KEY")
         if not key:
-            raise AuthenticationError("No API key provided. Set mailifica.api_key or pass api_key parameter.")
+            raise AuthenticationError("No API key provided. Set lumi.api_key or pass api_key parameter.")
         return key
 
     @staticmethod
     def get_base_url(base_url: Optional[str] = None) -> str:
-        from mailifica import api_url as global_url
-        return (base_url or global_url or os.environ.get("MAILIFICA_BASE_URL", DEFAULT_BASE_URL)).rstrip("/")
+        from lumi import api_url as global_url
+        return (base_url or global_url or os.environ.get("LUMI_BASE_URL", DEFAULT_BASE_URL)).rstrip("/")
 
     @classmethod
     def request(
@@ -89,11 +89,11 @@ class HttpClient:
                 elif response.status_code >= 500:
                     raise InternalServerError(message, status_code=response.status_code, error_type=err_type)
                 else:
-                    raise MailificaError(message, status_code=response.status_code, error_type=err_type)
+                    raise LumiError(message, status_code=response.status_code, error_type=err_type)
 
             if response.status_code == 204 or not response.content:
                 return {"success": True}
 
             return response.json()
         except requests.RequestException as e:
-            raise MailificaError(f"Network error: {str(e)}")
+            raise LumiError(f"Network error: {str(e)}")

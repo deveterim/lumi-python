@@ -1,6 +1,6 @@
-# Mailifica Python SDK (`mailifica`)
+# Lumi Python SDK (`mailifica`)
 
-> SDK oficial em Python para a infraestrutura de e-mails transacionais **Mailifica**, com interface drop-in replacement compatível com o Resend.
+> SDK oficial em Python para a infraestrutura de e-mails transacionais **Lumi**, com interface drop-in replacement compatível com o Resend.
 
 ---
 
@@ -19,28 +19,28 @@ poetry add mailifica
 ### 1. Envio Estático (Estilo Resend)
 
 ```python
-import mailifica
+import lumi
 
 # Configurar API Key
-mailifica.api_key = "ma_live_123456789"
+lumi.api_key = "ma_live_123456789"
 
-params: mailifica.Emails.SendParams = {
+params: lumi.Emails.SendParams = {
     "from": "onboarding@suaempresa.ao",
     "to": ["cliente@gmail.com"],
     "subject": "Boas-vindas!",
     "html": "<h1>Olá!</h1><p>Seu e-mail transacional foi entregue.</p>",
 }
 
-email = mailifica.Emails.send(params)
+email = lumi.Emails.send(params)
 print("E-mail ID:", email["id"])
 ```
 
 ### 2. Envio Orientado a Objetos / Instância
 
 ```python
-from mailifica import Mailifica
+from lumi import Lumi
 
-client = Mailifica("ma_live_123456789")
+client = Lumi("ma_live_123456789")
 
 response = client.emails.send({
     "from": "suporte@suaempresa.ao",
@@ -53,11 +53,11 @@ response = client.emails.send({
 ### 3. Envio em Lote (Batch)
 
 ```python
-import mailifica
+import lumi
 
-mailifica.api_key = "ma_live_123456789"
+lumi.api_key = "ma_live_123456789"
 
-batch_response = mailifica.Batch.send([
+batch_response = lumi.Batch.send([
     {
         "from": "novidades@suaempresa.ao",
         "to": "cliente1@gmail.com",
@@ -76,22 +76,22 @@ batch_response = mailifica.Batch.send([
 ### 4. Gestão de Domínios & API Keys
 
 ```python
-import mailifica
+import lumi
 
 # Criar domínio
-domain = mailifica.Domains.create({"name": "meudominio.ao"})
+domain = lumi.Domains.create({"name": "meudominio.ao"})
 
 # Verificar registros DNS
-verified = mailifica.Domains.verify(domain["id"])
+verified = lumi.Domains.verify(domain["id"])
 
 # Listar API Keys
-keys = mailifica.ApiKeys.list()
+keys = lumi.ApiKeys.list()
 ```
 
 ### 5. Validação de Webhooks HMAC
 
 ```python
-from mailifica import Webhooks
+from lumi import Webhooks
 
 is_valid = Webhooks.verify_signature(
     payload=raw_body,
@@ -104,4 +104,4 @@ is_valid = Webhooks.verify_signature(
 
 ## 📄 Licença
 
-MIT © [Mailifica](https://mailifica.com)
+MIT © [Lumi](https://lumi.com)

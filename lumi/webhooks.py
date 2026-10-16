@@ -2,7 +2,7 @@ import hmac
 import hashlib
 import json
 from typing import Any, Dict, Union
-from mailifica.errors import InvalidRequestError
+from lumi.errors import InvalidRequestError
 
 class Webhooks:
     @staticmethod

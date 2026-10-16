@@ -1,25 +1,25 @@
 import os
 from typing import Optional
-from mailifica.emails import Emails
-from mailifica.batch import Batch
-from mailifica.domains import Domains
-from mailifica.api_keys import ApiKeys
-from mailifica.webhooks import Webhooks
-from mailifica.errors import (
-    MailificaError,
+from lumi.emails import Emails
+from lumi.batch import Batch
+from lumi.domains import Domains
+from lumi.api_keys import ApiKeys
+from lumi.webhooks import Webhooks
+from lumi.errors import (
+    LumiError,
     AuthenticationError,
     InvalidRequestError,
     RateLimitError,
     InternalServerError,
 )
-from mailifica._version import __version__
+from lumi._version import __version__
 
-api_key: Optional[str] = os.environ.get("MAILIFICA_API_KEY")
-api_url: Optional[str] = os.environ.get("MAILIFICA_BASE_URL")
+api_key: Optional[str] = os.environ.get("LUMI_API_KEY")
+api_url: Optional[str] = os.environ.get("LUMI_BASE_URL")
 
-class Mailifica:
+class Lumi:
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.environ.get("MAILIFICA_API_KEY")
+        self.api_key = api_key or os.environ.get("LUMI_API_KEY")
         self.emails = Emails(api_key=self.api_key)
         self.batch = Batch(api_key=self.api_key)
         self.domains = Domains(api_key=self.api_key)
@@ -27,13 +27,13 @@ class Mailifica:
         self.webhooks = Webhooks()
 
 __all__ = [
-    "Mailifica",
+    "Lumi",
     "Emails",
     "Batch",
     "Domains",
     "ApiKeys",
     "Webhooks",
-    "MailificaError",
+    "LumiError",
     "AuthenticationError",
     "InvalidRequestError",
     "RateLimitError",

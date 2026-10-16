@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mailifica"
+name = "lumi-mail"
 version = "1.0.2"
-description = "Official Python SDK for Mailifica Email Infrastructure"
+description = "Official Python SDK for Lumi Email Infrastructure"
 readme = "README.md"
 authors = [
-  { name = "Mailifica", email = "team@mailifica.com" }
+  { name = "Lumi", email = "team@lumi.com" }
 ]
 license = { text = "MIT" }
 requires-python = ">=3.8"
@@ -30,14 +30,14 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://mailifica.com"
-Documentation = "https://mailifica.com/docs"
-Repository = "https://github.com/mailifica/mailifica-python"
-"Bug Tracker" = "https://github.com/mailifica/mailifica-python/issues"
+Homepage = "https://lumi.com"
+Documentation = "https://lumi.com/docs"
+Repository = "https://github.com/deveterim/lumi-python"
+"Bug Tracker" = "https://github.com/deveterim/lumi-python/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["mailifica*"]
+include = ["lumi*"]
 
 [tool.setuptools.package-data]
 mailifica = ["py.typed"]

@@ -1,5 +1,5 @@
 from typing import Any, Dict, Optional
-from mailifica._client import HttpClient, class_or_instancemethod
+from lumi._client import HttpClient, class_or_instancemethod
 
 class Domains:
     def __init__(self, api_key: Optional[str] = None):

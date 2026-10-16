@@ -1,17 +1,17 @@
-import mailifica
+import lumi
 
-# Definir API Key globalmente ou via MAILIFICA_API_KEY no ambiente
-mailifica.api_key = "ma_live_123456789"
+# Definir API Key globalmente ou via LUMI_API_KEY no ambiente
+lumi.api_key = "ma_live_123456789"
 
-params: mailifica.Emails.SendParams = {
+params: lumi.Emails.SendParams = {
     "from": "onboarding@suaempresa.ao",
     "to": ["cliente@gmail.com"],
-    "subject": "Boas-vindas ao Mailifica!",
+    "subject": "Boas-vindas ao Lumi!",
     "html": "<h1>Olá!</h1><p>Seu e-mail transacional foi entregue com sucesso.</p>",
 }
 
 try:
-    response = mailifica.Emails.send(params)
+    response = lumi.Emails.send(params)
     print("E-mail enviado com sucesso. ID:", response.get("id"))
-except mailifica.MailificaError as e:
+except lumi.LumiError as e:
     print(f"Erro ({e.status_code}): {e.message}")

@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional, Union
 from typing_extensions import TypedDict
-from mailifica._client import HttpClient, class_or_instancemethod
+from lumi._client import HttpClient, class_or_instancemethod
 
 class Tag(TypedDict, total=False):
     name: str
