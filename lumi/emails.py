@@ -66,8 +66,8 @@ class Emails:
         if isinstance(payload.get("bcc"), str):
             payload["bcc"] = [payload["bcc"]]
 
-        return HttpClient.request("POST", "/emails", params=payload, api_key=api_key)
+        return HttpClient.request("POST", "/api/v1/send", params=payload, api_key=api_key)
 
     @classmethod
     def get_email(cls, email_id: str, api_key: Optional[str] = None) -> Dict[str, Any]:
-        return HttpClient.request("GET", f"/emails/{email_id}", api_key=api_key)
+        return HttpClient.request("GET", f"/api/v1/send/{email_id}", api_key=api_key)

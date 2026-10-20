@@ -9,7 +9,7 @@ from lumi.errors import (
     InternalServerError,
 )
 
-DEFAULT_BASE_URL = "https://api.lumi.com/v1"
+DEFAULT_BASE_URL = "https://api.lumi.ao"
 
 class class_or_instancemethod:
     def __init__(self, fn):
