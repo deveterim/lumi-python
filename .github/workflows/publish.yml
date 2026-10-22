@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/mailifica
+      url: https://pypi.org/p/lumi-mail
     permissions:
       id-token: write # OBRIGATÓRIO para autenticação OIDC via PyPI Trusted Publishing
 
